@@ -1,9 +1,6 @@
 const url = 'https://api.openweathermap.org/data/2.5/weather';
-const apiKey = '6eb55518c6c4fd127835a84f89a89555'; // Replace with your actual API key
-
+const apiKey = '6eb55518c6c4fd127835a84f89a89555'; 
 $(document).ready(function () {
-    // Optionally, you can initialize with a default city
-    // weatherFn('Mumbai');
 });
 
 async function weatherFn(cName) {
@@ -11,10 +8,7 @@ async function weatherFn(cName) {
         alert('Please enter a city, town, or village.');
         return;
     }
-
-    // Encode the city name to handle spaces and special characters
     const encodedCityName = encodeURIComponent(cName.trim());
-
     const temp = `${url}?q=${encodedCityName},IN&appid=${apiKey}&units=metric`;
     try {
         const res = await fetch(temp);
@@ -29,7 +23,6 @@ async function weatherFn(cName) {
         alert('Error fetching weather data. Please try again later.');
     }
 }
-
 function weatherShowFn(data) {
     $('#city-name').text(data.name);
     $('#date').text(moment().format('MMMM Do YYYY, h:mm:ss a'));
